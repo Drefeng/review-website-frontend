@@ -5,15 +5,16 @@ import {
   HashRouter
 } 
 from "react-router-dom";
-import Home from "./Home";
-import Stuff from "./Stuff";
-import Contact from "./Contact";
+import Home from "./components/Home";
+import Stuff from "./components/Stuff";
+import Contact from "./components/Contact";
 import "./index.css";
+import Userdash from "./components/Userdash";
+import TopRestaurants from "./components/TopRestaurants";
+import RecentReviews from "./components/RecentReviews";
 require('./styles.css');
 
 class App extends Component{
-
-  
    render(){
       return (
           <HashRouter>
@@ -23,11 +24,17 @@ class App extends Component{
               <li><NavLink to="/">Home</NavLink></li>
               <li><NavLink to="/stuff">Login/Register</NavLink></li>
               <li><NavLink to="/contact">Contact</NavLink></li>
+              <li><NavLink to="/userdash">User Dashboard</NavLink></li>
+              <li><NavLink to="/top">Top Restaurants</NavLink></li>
+              <li><NavLink to="/recent">Recent Reviews</NavLink></li>
             </ul>
             <div className="content">
               <Route exact path="/" component={Home}/>
               <Route path="/stuff" component={Stuff}/>
               <Route path="/contact" component={Contact}/>
+              <Route path="/userdash" component={Userdash}/>
+              <Route path="/top" component={TopRestaurants}/>
+              <Route path="/recent" component={RecentReviews}/>
             </div>
           </div>
           </HashRouter>
