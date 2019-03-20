@@ -15,7 +15,7 @@ class Stuff extends Component {
           <div label="Register">
             <Register />
           </div>
-        </Tabs>
+         </Tabs>
         </div>
       );
   }
