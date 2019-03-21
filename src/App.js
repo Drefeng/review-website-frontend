@@ -12,6 +12,7 @@ import "./index.css";
 import Userdash from "./components/Userdash/Userdash";
 import TopRestaurants from "./components/Restaurant/TopRestaurants";
 import RecentReviews from "./components/RecentReviews/RecentReviews";
+import Logout from "./components/Logout/Logout";
 require('./styles.css');
 
 class App extends Component{
@@ -27,6 +28,7 @@ class App extends Component{
               <li><NavLink to="/userdash">User Dashboard</NavLink></li>
               <li><NavLink to="/top">Top Restaurants</NavLink></li>
               <li><NavLink to="/recent">Recent Reviews</NavLink></li>
+              <li><NavLink className="navbar-right" to="/logout">Logout</NavLink></li>
             </ul>
             <div className="content">
               <Route exact path="/" component={Home}/>
@@ -35,8 +37,10 @@ class App extends Component{
               <Route path="/userdash" component={Userdash}/>
               <Route path="/top" component={TopRestaurants}/>
               <Route path="/recent" component={RecentReviews}/>
+              <Route path="/logout" component={Logout}/>
             </div>
           </div>
+          
           </HashRouter>
       );
    }
