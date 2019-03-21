@@ -5,13 +5,13 @@ import {
   HashRouter
 } 
 from "react-router-dom";
-import Home from "./components/Home";
-import Stuff from "./components/Stuff";
-import Contact from "./components/Contact";
+import Home from "./components/Home/Home";
+import Stuff from "./components/LogReg/LogReg";
+import Contact from "./components/Contact/Contact";
 import "./index.css";
-import Userdash from "./components/Userdash";
-import TopRestaurants from "./components/TopRestaurants";
-import RecentReviews from "./components/RecentReviews";
+import Userdash from "./components/Userdash/Userdash";
+import TopRestaurants from "./components/Restaurant/TopRestaurants";
+import RecentReviews from "./components/RecentReviews/RecentReviews";
 require('./styles.css');
 
 class App extends Component{

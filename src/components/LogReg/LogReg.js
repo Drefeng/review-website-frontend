@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Tabs from './Tabs';
-import Login from './Login'
-import Register from './Register'
+import Tabs from '../Tabs/Tabs';
+import Login from './Login/Login'
+import Register from './Register/Register'
 
-class Stuff extends Component {
+class LogReg extends Component {
   render() {
     return (
         <div>
@@ -21,4 +21,4 @@ class Stuff extends Component {
   }
 }
  
-export default Stuff;
+export default LogReg;
