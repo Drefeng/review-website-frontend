@@ -21,7 +21,7 @@ class Logout extends Component{
 
     logout(){
         localStorage.clear();
-        this.props.history.push('/');
+        this.props.history.push('/stuff');
         window.location.reload();
     }
 }
