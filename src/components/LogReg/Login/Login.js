@@ -42,6 +42,8 @@ class Login extends Component{
             localStorage.setItem('id', data.id);
             localStorage.setItem('role', data.role);
             this.setState({role: data.role});
+            this.props.roleChange(data.role, data.token);
+            this.props.history.replace('/');
         })
         .catch(err => {
             console.log(err);
@@ -52,7 +54,7 @@ class Login extends Component{
 
     render() {
         return (
-          <form  method="post">
+        <form  method="post">
           <div className="input-group mb-3">
             <div className="input-group-prepend">
             <span className="input-group-text" id="basic-addon1">Username</span>

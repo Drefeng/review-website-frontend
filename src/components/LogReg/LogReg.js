@@ -10,7 +10,7 @@ class LogReg extends Component {
           <h1>Login or Register</h1>
          <Tabs>
           <div label="Login">
-            <Login />
+            <Login roleChange={this.props.roleChange} {...this.props}/>
           </div>
           <div label="Register">
             <Register />

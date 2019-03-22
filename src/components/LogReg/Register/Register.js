@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Button} from 'reactstrap';
 
 class Register extends Component{
 
@@ -40,30 +41,54 @@ class Register extends Component{
 
     render(){
         return(
-        <form onSubmit={this.handleSubmit}>
-        <div>
-              <label>Username:</label>
-              <input ref={(ref) => {this.username = ref}} placeholder="username"> 
-            </input>
+
+            <form  onSubmit={this.handleSubmit}>
+            <div className="input-group mb-3">
+              <div className="input-group-prepend">
+              <span className="input-group-text" id="basic-addon1">Username</span>
+          </div>
+          <input ref={(ref) => {this.username = ref}} placeholder="username"> 
+        </input>
+          </div>
+
+          <div className="input-group mb-3">
+              <div className="input-group-prepend">
+              <span className="input-group-text" id="basic-addon1">Password  </span>
+          </div>
+          <input type="password" ref={(ref) => {this.password = ref}} placeholder="password"/>
+          </div>
+          <div>
+          <div className="input-group mb-3">
+              <div className="input-group-prepend">
+              <span className="input-group-text" id="basic-addon1">Email</span>
+          </div>
+          <input ref={(ref) => {this.email = ref}} placeholder="email">  
+        </input>
+          </div>
+          <div className="form-group">
+            <label for="sel1">Role</label>
+            <select className="form-control" id="sel1" ref={(ref) => {this.role = ref}}>
+                <option value="1">Reviewer</option>
+                <option value="2">Owner</option>
+            </select>
         </div>
-        <div>
-              <label>Email:</label>
-              <input ref={(ref) => {this.email = ref}} placeholder="email">  
-            </input>
-        </div>
-        <div>
-              <label>Password:</label>
-              <input ref={(ref) => {this.password = ref}} placeholder="password"> 
-            </input>
-        </div>
-        <div>
-              <label>Role:</label>
-              <input ref={(ref) => {this.role = ref}} placeholder="role"> 
-            </input>
-        </div>
-        <button type="Submit">  Register  </button>
-        <p>{this.state.registred}</p>
-        </form>
+                  
+          <Button type="submit" color="primary">Login</Button>
+          </div>
+          </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
         );
     }
 }
