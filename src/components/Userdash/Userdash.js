@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import ReviewDash from "./ReviewDash/ReviewDash";
 import OwnerDash from "./OwnerDash/OwnerDash";
-import Tabs from "../Tabs/Tabs";
-import Update from "./Update";
  
 class Userdash extends Component {
   constructor(){
@@ -25,7 +23,9 @@ componentDidMount() {
 }
 
   render() {
-    return(
+
+    if(localStorage.length === 0){
+    return (
       <div>
                 <Tabs>
                 <div label ='List your reviews' />
@@ -40,6 +40,7 @@ componentDidMount() {
             </div>
     )};
     
+}
 }
 
 export default Userdash;
