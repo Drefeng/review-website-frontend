@@ -13,15 +13,6 @@ class Userdash extends Component {
       </div>
     );
   }
-  else{
-    return(
-      <div>
-        <h2>Welcome</h2>
-
-        <p>You are now logged in</p>
-      </div>
-    );
-  }
 }
 }
 

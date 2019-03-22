@@ -25,7 +25,7 @@ const RestaurantCard = (props) => {
                     </div>
                     </div>
                     <p className="card-title">{props.review}</p>
-                    <Link to= {{ pathname: '/edit/' + props.id }} className="btn btn-primary">Edit</Link>
+                    <Link to= {{ pathname: '/RestaurantDash/' + props.id }} className="btn btn-primary">Edit</Link>
                 </div>
             </div>
         </div>

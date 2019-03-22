@@ -7,7 +7,8 @@ class Login extends Component{
         super(props);
         this.state = {
             username: "",
-            password:""
+            password:"",
+            role: ""
         }
     }
 
@@ -38,7 +39,11 @@ class Login extends Component{
         })
         .then(data =>{
             localStorage.setItem('token',data.accessToken);
-            window.location.reload();
+            localStorage.setItem('id', data.id);
+            localStorage.setItem('role', data.role);
+            this.setState({role: data.role});
+            this.props.roleChange(data.role, data.token);
+            this.props.history.replace('/');
         })
         .catch(err => {
             console.log(err);
@@ -48,9 +53,8 @@ class Login extends Component{
 
 
     render() {
-        console.log(this.state.username);
         return (
-          <form  method="post">
+        <form  method="post">
           <div className="input-group mb-3">
             <div className="input-group-prepend">
             <span className="input-group-text" id="basic-addon1">Username</span>
@@ -68,9 +72,6 @@ class Login extends Component{
         </div>
         </form>
         );
-
-
-        
     }
   }
 
