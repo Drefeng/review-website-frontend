@@ -1,17 +1,17 @@
 import React from 'react';
 import './RestaurantCard.css';
-import { Link } from 'react-router-dom';
+import { Card, CardTitle, CardText, } from 'reactstrap';
+import StarRatings from 'react-star-ratings';
+ 
 
 const RestaurantCard = (props) => {
     return (
-        <div className="col-xs-12 col-sm-6 col-md-4">
-            <div className="card">
-                <div className="card-body">
-                    <h4 className="card-title">{props.id}</h4>
-                    <h4 className="card-title">{props.name}</h4>
-                    <div className="mapouter">
-                    <div className="gmap_canvas">
-                        <iframe 
+
+        <Card body outline color="primary" className="text-center">
+        <CardTitle>Restaurant: {props.name}</CardTitle>
+        <CardText>Description: {props.description}</CardText>
+        <CardText>Category: {props.category}</CardText>
+        <iframe 
                             title="map"
                             width="270" 
                             height="270" 
@@ -21,14 +21,24 @@ const RestaurantCard = (props) => {
                             scrolling="no" 
                             marginHeight="0" 
                             marginWidth="0">
-                        </iframe>
-                    </div>
-                    </div>
-                    <p className="card-title">{props.review}</p>
-                    <Link to= {{ pathname: '/RestaurantDash/' + props.id }} className="btn btn-primary">Edit</Link>
-                </div>
-            </div>
-        </div>
+        </iframe>
+        <br>
+
+        </br>
+        <CardText>Address: {props.address}, {props.postcode}</CardText>
+
+        {/* <StarRatings
+        starRatedColor="yellow"
+        numberOfStars={5}
+        name='rating'
+        rating={parseFloat(props.rating)}
+        /> */}
+        
+
+     
+    </Card>
+
+      
     )
 };
 

@@ -11,6 +11,19 @@ const RestaurantCard = (props) => {
         <CardText>Description: {props.description}</CardText>
         <CardText>Category: {props.category}</CardText>
         <CardText>Address: {props.address}, {props.postcode}</CardText>
+        <div className="text-center">
+        <iframe             align="center"
+                            title="map"
+                            width="270" 
+                            height="270" 
+                            id="gmap_canvas" 
+                            src={"https://maps.google.com/maps?q=" + props.address + "&t=&z=13&ie=UTF8&iwloc=&output=embed"} 
+                            frameBorder="0" 
+                            scrolling="no" 
+                            marginHeight="0" 
+                            marginWidth="0">
+        </iframe>
+        </div>
 
         <StarRatings
         starRatedColor="yellow"

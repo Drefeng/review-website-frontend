@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import RestaurantList from "./RestaurantList/RestaurantList";
 import { Container, Row } from 'reactstrap';
+import RestaurantCard from '../cardsItems/ResturantCards'
 import RecentCards from '../cardsItems/recentReviewsCard'
  
 class TopRestaurants extends Component {
@@ -98,6 +98,17 @@ class TopRestaurants extends Component {
   ));
 
 
+  const restaurant = this.state.restaurant.map(item => (
+    <RestaurantCard
+        key={item.restaurant_id}
+        name={item.name}
+        description={item.description}
+        category={item.category}
+        address={item.address}
+        postcode={item.postcode}
+        rating={item.avgrating}
+    />));
+
 
   return (
  
@@ -108,7 +119,7 @@ class TopRestaurants extends Component {
         <input type="text" className="form-control" placeholder="Search" onChange={this.handleSearchChange} value={this.state.searchText} />
         <br></br>
         <Row>
-        <RestaurantList restaurants={this.state.restaurant} />
+        {restaurant}
         </Row>
       </div>
       <div>
