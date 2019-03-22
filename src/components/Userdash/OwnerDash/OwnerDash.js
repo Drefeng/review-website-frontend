@@ -5,11 +5,11 @@ class OwnerDash extends Component{
     render(){
         return(
             <Tabs>
-                <div>See all restaurants</div>
+                <div label ='List your restaurants' />
                 
-                <div>Create new restaurant</div>
+                <div label ='Create new restaurant' />
 
-                <div>Update user info</div>
+                <div label ='Update user info' />
             </Tabs>
         );
     }

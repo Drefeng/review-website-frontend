@@ -4,11 +4,11 @@ class ReviewDash extends Component{
     render(){
         return(
             <Tabs>
-                <div>See all reviews</div>
+                <div label ='List your reviews' />
                 
-                <div>Add new review</div>
+                <div label ='Create new review' />
 
-                <div>Update user info</div>
+                <div label ='Update user info' />
             </Tabs>
         );
     }
