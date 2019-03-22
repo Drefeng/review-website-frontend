@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import ReviewDash from "./ReviewDash/ReviewDash";
+import OwnerDash from "./OwnerDash/OwnerDash";
  
 class Userdash extends Component {
   render() {
-    
+    if(localStorage.length === 0){
     return (
       <div>
         <h2>YOU ARE NOT AUTHORIZED TO ACCESS THIS PAGE</h2>
@@ -11,23 +13,16 @@ class Userdash extends Component {
       </div>
     );
   }
-}
- /* else if( user auth === 1 ){
-    if(user role === 0  ){
-    return (
+  else{
+    return(
       <div>
+        <h2>Welcome</h2>
 
+        <p>You are now logged in</p>
       </div>
     );
-    }
-    else{
-      return (
-        <div>
-
-        </div>
-      );
-    }
   }
 }
-} */
+}
+
 export default Userdash;

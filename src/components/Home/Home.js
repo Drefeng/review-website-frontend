@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { Container, Row, Col } from 'reactstrap';
  
 class Home extends Component {
@@ -11,6 +12,34 @@ class Home extends Component {
           <Col sm="4">.col-sm-4</Col>
       </Row>
       </Container>
+=======
+import RestaurantList from "../Restaurant/RestaurantList/RestaurantList";
+
+ 
+class Home extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      restaurants: [],
+  };
+}
+
+/* componentWillMount(){
+
+  fetch('https://review-website-api.herokuapp.com/restaurant')
+  .then(data => data.json())
+      .then((data) => { this.setState({ restaurants: data }) 
+    }); 
+
+} */
+
+
+render() {
+  return (
+    <div>
+        Test
+      </div>
+>>>>>>> 0b402132a71f02474f51d3cf4127fcf69092c381
     );
   }
 }
