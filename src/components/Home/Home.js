@@ -9,9 +9,7 @@ class Home extends Component {
     super()
     this.state = {
       allReviews: [],
-      popularRes: [],
-      restaurant:[],
-      searchText: ''
+      popularRes: []
   };
   
   }
@@ -19,7 +17,6 @@ class Home extends Component {
   componentDidMount() {
     this.getRecentReview();
     this.getPopular();
-    this.getRestaurant();
   }
   
   getRecentReview(){

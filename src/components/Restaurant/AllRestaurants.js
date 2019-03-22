@@ -5,8 +5,7 @@ class TopRestaurants extends Component {
   constructor(props){
     super(props);
     this.state = {
-      data: [],
-      error: ''
+      data: []
     }
   }
 
@@ -14,32 +13,32 @@ class TopRestaurants extends Component {
       this.getData();
   }
 
-  getData(){
-    fetch('/restaurant/all', {
-      method: 'GET',
-      headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization' : 'Bearer' + " " + localStorage.getItem('token')
-      }
-  })
-  .then((res)=> {
-          return res.json();
-  })
-  .then(data => {
-    let restaurant = data.rows.map((res) => {
-      return(res)
-    })
-    this.setState({data: restaurant}, function(){
-      console.log(this.state.data);
-    }.bind(this))
-  })
+  // getData(){
+  //   fetch('/restaurant/all', {
+  //     method: 'GET',
+  //     headers: {
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json',
+  //         'Authorization' : 'Bearer' + " " + localStorage.getItem('token')
+  //     }
+  // })
+  // .then((res)=> {
+  //         return res.json();
+  // })
+  // .then(data => {
+  //   let restaurant = data.rows.map((res) => {
+  //     return(res)
+  //   })
+  //   this.setState({data: restaurant}, function(){
+  //     console.log(this.state.data);
+  //   }.bind(this))
+  // })
 
-  .catch(err => {
-      console.log(err);
-      this.setState({error: 'YOU ARE NOT AUTHORIZED TO ACCESS THIS PAGE'})
-  });
-  }
+  // .catch(err => {
+  //     console.log(err);
+  //     this.setState({error: 'YOU ARE NOT AUTHORIZED TO ACCESS THIS PAGE'})
+  // });
+  // }
 
 
   render() {

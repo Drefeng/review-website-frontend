@@ -28,6 +28,12 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+
+  "devServer": {
+
+    "compress": "true",
+    "disableHostCheck": "true"
+ },
   "browserslist": [
     ">0.2%",
     "not dead",
