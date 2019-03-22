@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import ReviewDash from "./ReviewDash/ReviewDash";
 import OwnerDash from "./OwnerDash/OwnerDash";
+import Tab from "../Tabs/Tab/Tab";
+import Tabs from "../Tabs/Tabs";
+import Update from "./Update";
  
 class Userdash extends Component {
   constructor(){
