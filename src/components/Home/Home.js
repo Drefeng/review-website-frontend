@@ -1,30 +1,17 @@
 import React, { Component } from "react";
-import RestaurantList from "../Restaurant/RestaurantList/RestaurantList";
 
+import { Container, Row, Col } from 'reactstrap';
  
 class Home extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      restaurants: [],
-  };
-}
-
-/* componentWillMount(){
-
-  fetch('https://review-website-api.herokuapp.com/restaurant')
-  .then(data => data.json())
-      .then((data) => { this.setState({ restaurants: data }) 
-    }); 
-
-} */
-
-
-render() {
-  return (
-    <div>
-        Test
-      </div>
+  render() {
+    return (
+      <Container>
+      <Row>
+          <Col xs="6" sm="4">.col-6 .col-sm-4</Col>
+          <Col xs="6" sm="4">.col-6 .col-sm-4</Col>
+          <Col sm="4">.col-sm-4</Col>
+      </Row>
+      </Container>
     );
   }
 }

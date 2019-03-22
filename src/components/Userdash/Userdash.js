@@ -11,7 +11,7 @@ class Userdash extends Component {
 }
 
 componentDidMount() {
-  fetch('/user/1')
+  fetch('/user/' + localStorage.getItem('id'))
   .then(results =>{
     return results.json();
   }).then(data => {
@@ -41,19 +41,19 @@ componentDidMount() {
       </div>
     ))
       
-    if(localStorage.getItem('role') === 0){
+    if(JSON.parse(localStorage.getItem('role')) === 0){
     return (
       <div>
-        <h2>Welcome {username}</h2>
+        <h2>Welcome</h2>
         <p>{username}</p>
         <div>
           <ReviewDash />
         </div>
-        <p>You are now logged in as reviewer</p>
+        <p>You are now logged in as {username} (reviewer)</p>
       </div>
     );
   }
-  else{
+  else if(JSON.parse(localStorage.getItem('role')) === 1){
     return(
       <div>
         <h2>Welcome</h2>
@@ -61,7 +61,7 @@ componentDidMount() {
         <div>
           <OwnerDash />
         </div>
-        <p>You are now logged in as owner</p>
+        <p>You are now logged in as {username} (owner)</p>
       </div>
     );
   }
