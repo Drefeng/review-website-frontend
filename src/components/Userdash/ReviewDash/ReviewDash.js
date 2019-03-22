@@ -12,7 +12,7 @@ class ReviewDash extends Component{
     }
 
     getRecentReview(){
-        fetch('/review/user/' + localStorage.getItem('id')).then(res => res.json())
+        fetch('https://review-website-api.herokuapp.com/review/user/' + localStorage.getItem('id')).then(res => res.json())
         .then(data => {
             this.setState({
                 yourReviews: data.rows

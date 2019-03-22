@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import RestaurantList from "./RestaurantList/RestaurantList";
+import { Container, Row } from 'reactstrap';
+import RecentCards from '../cardsItems/recentReviewsCard'
  
 class TopRestaurants extends Component {
   constructor(props){
     super(props);
     this.state = {
-      data: []
+      restaurant: [],
+      reviews:[],
+      searchText: ''
     }
   }
 
   componentWillMount(){
       this.getData();
+      this.getReveiws();
   }
 
   // getData(){
@@ -41,15 +46,78 @@ class TopRestaurants extends Component {
   // }
 
 
+  getData(){
+    fetch('https://review-website-api.herokuapp.com/restaurant/all').then(res => res.json())
+    .then(data => {
+        this.setState({
+          restaurant: data.rows
+        })
+        console.log(data);
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
+  getReveiws(){
+    fetch('https://review-website-api.herokuapp.com/review/revres').then(res => res.json())
+    .then(data => {
+        this.setState({
+          reviews: data.rows
+        })
+        console.log(data);
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
+  handleSearchChange = (event) => {
+    this.setState({ searchText: event.target.value }, () => {
+        if (this.state.searchText) {
+            const filter = this.state.restaurant.filter(el => {
+                return el.name.toLowerCase().includes(this.state.searchText.toLowerCase()) || el.category.toLowerCase().includes(this.state.searchText.toLowerCase())
+            });
+            this.setState({ restaurant: filter });
+        } else {
+            this.getData();
+        }
+    });
+
+}
+
+
   render() {
 
-  console.log(localStorage.getItem('token'))
+    const reviews = this.state.reviews.map(item => (
+      <RecentCards
+          key={item.review_id}
+          name={item.name}
+          description={item.review_text}
+          rating={item.rating}
+          updated={item.updated_at}
+      />
+  ));
+
+
+
   return (
-    <div>
-      <h2>Restaurants</h2>
-        <h1>{this.state.error}</h1>
-        <RestaurantList restaurants={this.state.data} />
-    </div>
+ 
+
+ <Container>
+      <div>
+        <h1 className="text-center">All restaurants</h1>
+        <input type="text" className="form-control" placeholder="Search" onChange={this.handleSearchChange} value={this.state.searchText} />
+        <br></br>
+        <Row>
+        <RestaurantList restaurants={this.state.restaurant} />
+        </Row>
+      </div>
+      <div>
+      <h1 className="text-center">All Reviews</h1>
+      <Row>
+        {reviews}
+        </Row>
+      </div>
+  </Container>
   );
   }
   }

@@ -7,8 +7,8 @@ const RecentCards = (props) => {
 
     return (
     <Card body outline color="primary" className="text-center">
-        <CardTitle>{props.name}</CardTitle>
-        <CardText>{props.description}</CardText>
+        <CardTitle>Name: {props.name}</CardTitle>
+        <CardText>Description: {props.description}</CardText>
         <StarRatings
         starRatedColor="yellow"
         numberOfStars={5}
@@ -17,7 +17,7 @@ const RecentCards = (props) => {
         >
         </StarRatings>
         <CardText>
-            <small className="text-muted">{props.updated}</small>
+            <small className="text-muted">updatet at {props.updated}</small>
         </CardText>
      
     </Card>

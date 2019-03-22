@@ -17,7 +17,7 @@ class Update extends Component{
 
     handleSubmit(event){ 
     event.preventDefault();
-    fetch('/user/update', {
+    fetch('https://review-website-api.herokuapp.com/user/update', {
      method: 'post',
      headers: {'Content-Type':'application/json'},
      body: JSON.stringify({
