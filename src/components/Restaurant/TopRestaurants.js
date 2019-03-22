@@ -5,7 +5,8 @@ class TopRestaurants extends Component {
 constructor(props){
   super(props);
   this.state = {
-    data: []
+    data: [],
+    error: ''
   }
 }
 
@@ -14,7 +15,8 @@ componentWillMount(){
         method: 'GET',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer' + " " + localStorage.getItem('token')
         }
     })
     .then((res)=> {
@@ -31,16 +33,18 @@ componentWillMount(){
     
     .catch(err => {
         console.log(err);
-        alert('error logging in please try again');
+        this.setState({error: 'YOU ARE NOT AUTHORIZED TO ACCESS THIS PAGE'})
     });
 }
 
 
 render() {
-console.log(this.state.data.description);
+
+console.log(localStorage.getItem('token'))
 return (
   <div>
     <h2>Restaurants</h2>
+      <h1>{this.state.error}</h1>
       <RestaurantList restaurants={this.state.data} />
   </div>
 );
