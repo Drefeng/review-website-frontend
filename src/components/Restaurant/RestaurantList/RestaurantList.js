@@ -8,8 +8,8 @@ function RestaurantList(props){
 	        	key = {res.restaurant_id}
 	        	id = {res.restaurant_id}
 		        name = {res.name}
-				address = {res.address}
-				review = {res.description}
+						address = {res.address}
+						review = {res.description}
 		    />
 	        );
 
