@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
-class Logout extends React.Component{
+class Logout extends Component{
+
     render(){
         if(localStorage.length === 0){
             return (
@@ -17,8 +18,11 @@ class Logout extends React.Component{
             );
         }
     }
+
     logout(){
         localStorage.clear();
+        this.props.history.push('/');
+        window.location.reload();
     }
 }
 

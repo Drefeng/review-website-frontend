@@ -16,14 +16,18 @@ import Logout from "./components/Logout/Logout";
 require('./styles.css');
 
 class App extends Component{
+  constructor(props){
+    super(props);
+    console.log()
+  }
+
    render(){
       return (
           <HashRouter>
-          <div>
+            <div>
             <h1>Simple SPA</h1>
             <ul className="header">
               <li><NavLink to="/">Home</NavLink></li>
-              <li><NavLink to="/stuff">Login/Register</NavLink></li>
               <li><NavLink to="/contact">Contact</NavLink></li>
               <li><NavLink to="/userdash">User Dashboard</NavLink></li>
               <li><NavLink to="/top">Top Restaurants</NavLink></li>
@@ -40,7 +44,6 @@ class App extends Component{
               <Route path="/logout" component={Logout}/>
             </div>
           </div>
-          
           </HashRouter>
       );
    }

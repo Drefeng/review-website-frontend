@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 
+import {Button} from 'reactstrap';
 
 class Login extends Component{
-    constructor(){
-        super();
+    constructor(props, context){
+        super(props);
         this.state = {
             username: "",
             password:""
@@ -36,31 +37,40 @@ class Login extends Component{
             }
         })
         .then(data =>{
-            console.log(data);
             localStorage.setItem('token',data.accessToken);
+            window.location.reload();
         })
         .catch(err => {
             console.log(err);
             alert('error logging in please try again');
-        })
+        });
     }
 
+
     render() {
+        console.log(this.state.username);
         return (
           <form  method="post">
-          <div>
-              <label>Username:</label>
-              <input type="text" onChange={this.handleInputChange} name="username"/>
-          </div>
-          <div>
-              <label>Password:</label>
-              <input type="password" onChange={this.handleInputChange} name="password"/>
-          </div>
-          <div>
-              <input type="submit"  onClick={this.onSubmit} value="Log In"/>
-          </div>
-      </form>
+          <div className="input-group mb-3">
+            <div className="input-group-prepend">
+            <span className="input-group-text" id="basic-addon1">Username</span>
+        </div>
+        <input type="text" onChange={this.handleInputChange} name="username"/>
+        </div>
+        <div className="input-group mb-3">
+            <div className="input-group-prepend">
+            <span className="input-group-text" id="basic-addon1">Password  </span>
+        </div>
+        <input type="password" onChange={this.handleInputChange} name="password"/>
+        </div>
+        <div>
+        <Button type="submit" onClick={this.onSubmit} color="primary">Login</Button>
+        </div>
+        </form>
         );
+
+
+        
     }
   }
 

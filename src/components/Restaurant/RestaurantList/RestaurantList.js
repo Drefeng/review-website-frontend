@@ -1,14 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 
 function RestaurantList(props){
-	const restaurants = props.restaurants;
-    const listRestaurants = restaurants.map((res) =>
+	const res = props.restaurants;
+    const listRestaurants = res.map((res) =>
 	        <RestaurantCard
-	        	key = {res.id}
-	        	id = {res.id}
+	        	key = {res.restaurant_id}
+	        	id = {res.restaurant_id}
 		        name = {res.name}
-		        address = {res.address} 
+				address = {res.address}
+				review = {res.description}
 		    />
 	        );
 

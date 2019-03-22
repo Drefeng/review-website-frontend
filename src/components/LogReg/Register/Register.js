@@ -5,6 +5,10 @@ class Register extends Component{
     constructor(props){
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.state = {
+            registred: "",
+        }
     }
 
     handleSubmit(event){ 
@@ -17,24 +21,48 @@ class Register extends Component{
           "email": this.email.value,
           "password": this.password.value,
           "role": this.role.value,
+          "active": 1
          })
-        });
+        })
+        .then((res) => {
+            console.log(res.status);
+            if(res.status === 201){
+                this.setState({registred: "Registred completed"})
+                window.location.reload();
+            }else{
+                this.setState({registred: "The username or email is already in use"})
+            }
+        })
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
        };
 
 
     render(){
         return(
         <form onSubmit={this.handleSubmit}>
-            <input ref={(ref) => {this.username = ref}} placeholder="username"> 
+        <div>
+              <label>Username:</label>
+              <input ref={(ref) => {this.username = ref}} placeholder="username"> 
             </input>
-            <input ref={(ref) => {this.password = ref}} placeholder="email">  
+        </div>
+        <div>
+              <label>Email:</label>
+              <input ref={(ref) => {this.email = ref}} placeholder="email">  
             </input>
-            <input ref={(ref) => {this.email = ref}} placeholder="password"> 
+        </div>
+        <div>
+              <label>Password:</label>
+              <input ref={(ref) => {this.password = ref}} placeholder="password"> 
             </input>
-            <input ref={(ref) => {this.role = ref}} placeholder="role"> 
+        </div>
+        <div>
+              <label>Role:</label>
+              <input ref={(ref) => {this.role = ref}} placeholder="role"> 
             </input>
-            <button type="Submit">  Register  </button>
-
+        </div>
+        <button type="Submit">  Register  </button>
+        <p>{this.state.registred}</p>
         </form>
         );
     }
