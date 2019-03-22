@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Update from "../Userdash/Update";
 import Tabs from "../Tabs/Tabs";
+import Reviews from './resturantdashcomp/recentOwnerReviews'
 
 class RestaurantDash extends Component{
     render(){
@@ -11,11 +12,16 @@ class RestaurantDash extends Component{
                 
                 <div label ='Create new restaurant' />
 
-                <div label ='Recent reviews for your restaurants' />
+                <div label ='Recent reviews for your restaurants' >
+                <Reviews></Reviews>
+                </div>
 
                 <div label ='Update user info'>
+
+
                     <Update />
                 </div>
+
 
             </Tabs>
             </div>
