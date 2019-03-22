@@ -39,6 +39,9 @@ class App extends Component {
         <li>
           <NavLink to="/stuff">Login/Register</NavLink>
         </li>
+        <li>
+            <NavLink to="/top">Restaurants</NavLink>
+        </li>
       </Fragment>
     );
 
