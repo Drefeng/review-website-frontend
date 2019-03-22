@@ -41,31 +41,9 @@ class Home extends Component {
     });
   }
 
-  getRestaurant(){
-    fetch('https://review-website-api.herokuapp.com/restaurant/all').then(res => res.json())
-    .then(data => {
-      console.log(data.rows);
-        this.setState({
-          restaurant: data.rows
-        })
-    }).catch(err => {
-      console.log(err);
-    });
-  }
 
-  handleSearchChange = (event) => {
-    this.setState({ searchText: event.target.value }, () => {
-        if (this.state.searchText) {
-            const filter = this.state.restaurant.filter(el => {
-                return el.name.toLowerCase().includes(this.state.searchText.toLowerCase()) || el.category.toLowerCase().includes(this.state.searchText.toLowerCase())
-            });
-            this.setState({ restaurant: filter });
-        } else {
-            this.getRestaurant();
-        }
-    });
 
-}
+
 
   render() {
 
@@ -92,26 +70,12 @@ class Home extends Component {
     />
 ));
 
-const search = this.state.restaurant.map(item => (
-  <RestaurantCard
-  key={item.restaurant_id}
-  name={item.name}
-  description={item.description}
-  category={item.category}
-  address={item.address}
-  postcode={item.postcode}
-  rating={item.avgrating}
-/>
-));
     
-      
-
+    
     return (
       <Container>
       <div>
-        <input type="text" className="form-control" placeholder="Search" onChange={this.handleSearchChange} value={this.state.searchText} />
         <Row>
-          {search}
         </Row>
       </div>
 
