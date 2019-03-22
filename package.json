@@ -28,17 +28,10 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-
-  "devServer": {
-
-    "compress": "true",
-    "disableHostCheck": "true"
- },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "proxy": "https://review-website-api.herokuapp.com"
+  ]
 }

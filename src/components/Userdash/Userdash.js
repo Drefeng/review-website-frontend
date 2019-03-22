@@ -16,7 +16,7 @@ class Userdash extends Component {
 }
 
 componentDidMount() {
-  fetch('/user/' + localStorage.getItem('id'))
+  fetch('https://review-website-api.herokuapp.com/user/' + localStorage.getItem('id'))
   .then(results =>{
     return results.json();
   }).then(data => {
@@ -29,7 +29,7 @@ componentDidMount() {
 
 
 getRecentReview(){
-  fetch('/review/user/' + localStorage.getItem('id')).then(res => res.json())
+  fetch('https://review-website-api.herokuapp.com/review/user/' + localStorage.getItem('id')).then(res => res.json())
   .then(data => {
       this.setState({
           yourReviews: data.rows

@@ -20,7 +20,7 @@ class Home extends Component {
   }
   
   getRecentReview(){
-    fetch('/review/recentreviews').then(res => res.json())
+    fetch('https://review-website-api.herokuapp.com/review/recentreviews').then(res => res.json())
     .then(data => {
         this.setState({
             allReviews: data.rows
@@ -31,7 +31,7 @@ class Home extends Component {
   }
 
   getPopular(){
-    fetch('/restaurant/popular').then(res => res.json())
+    fetch('https://review-website-api.herokuapp.com/restaurant/popular').then(res => res.json())
     .then(data => {
         this.setState({
             popularRes: data.rows
@@ -42,7 +42,7 @@ class Home extends Component {
   }
 
   getRestaurant(){
-    fetch('/restaurant/all').then(res => res.json())
+    fetch('https://review-website-api.herokuapp.com/restaurant/all').then(res => res.json())
     .then(data => {
       console.log(data.rows);
         this.setState({
