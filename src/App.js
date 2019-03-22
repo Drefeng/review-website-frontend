@@ -1,52 +1,111 @@
-import React, { Component } from "react";
-import {
-  Route,
-  NavLink,
-  HashRouter
-} 
-from "react-router-dom";
+import React, { Component, Fragment } from "react";
+import { Route, NavLink, HashRouter } from "react-router-dom";
 import Home from "./components/Home/Home";
-import Stuff from "./components/LogReg/LogReg";
-import Contact from "./components/Contact/Contact";
+import LogReg from "./components/LogReg/LogReg";
 import "./index.css";
 import Userdash from "./components/Userdash/Userdash";
 import AllRestaurants from "./components/Restaurant/AllRestaurants";
 import RecentReviews from "./components/RecentReviews/RecentReviews";
+import RestaurantDash from "./components/RestaurantDash/RestaurantDash";
 import Logout from "./components/Logout/Logout";
-require('./styles.css');
+require("./styles.css");
 
-class App extends Component{
-  constructor(props){
+class App extends Component {
+  constructor(props) {
     super(props);
-    console.log()
+    this.state = {
+      role: '0',
+      token: ''
+    };
   }
 
-   render(){
-      return (
-          <HashRouter>
-            <div>
-            <h1>Simple SPA</h1>
-            <ul className="header">
-              <li><NavLink to="/">Home</NavLink></li>
-              <li><NavLink to="/contact">Contact</NavLink></li>
-              <li><NavLink to="/userdash">User Dashboard</NavLink></li>
-              <li><NavLink to="/top">All Restaurants</NavLink></li>
-              <li><NavLink to="/recent">Recent Reviews</NavLink></li>
-              <li><NavLink className="navbar-right" to="/logout">Logout</NavLink></li>
-            </ul>
-            <div className="content">
-              <Route exact path="/" component={Home}/>
-              <Route path="/stuff" component={Stuff}/>
-              <Route path="/contact" component={Contact}/>
-              <Route path="/userdash" component={Userdash}/>
-              <Route path="/top" component={AllRestaurants}/>
-              <Route path="/recent" component={RecentReviews}/>
-              <Route path="/logout" component={Logout}/>
-            </div>
-          </div>
-          </HashRouter>
+  handleChanged = (role, token) => {
+    this.setState(() => ({role, token}));
+  }
+
+  componentDidMount() {
+    const role = JSON.parse(localStorage.getItem('role'));
+    const token = localStorage.getItem('token');
+    console.log(role);
+    this.setState(() => ({role, token}));
+  }
+
+  render() {
+    let nav = (
+      <Fragment>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/stuff">Login/Register</NavLink>
+        </li>
+      </Fragment>
+    );
+
+    if (parseInt(this.state.role) === 2) {
+      nav = (
+        <Fragment>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/restaurantDash">Restaurant Dashboard</NavLink>
+          </li>
+          <li>
+            <NavLink to="/top">Top Restaurants</NavLink>
+          </li>
+          <li>
+            <NavLink to="/recent">Recent Reviews</NavLink>
+          </li>
+          <li>
+            <NavLink className="navbar-right" to="/logout">
+              Logout
+            </NavLink>
+          </li>
+        </Fragment>
       );
-   }
+    } else if (parseInt(this.state.role) === 1) {
+      nav = (
+        <Fragment>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/userdash">User Dashboard</NavLink>
+          </li>
+          <li>
+            <NavLink to="/top">Restaurants</NavLink>
+          </li>
+          <li>
+            <NavLink to="/recent">Recent Reviews</NavLink>
+          </li>
+          <li>
+            <NavLink className="navbar-right" to="/logout">
+              Logout
+            </NavLink>
+          </li>
+        </Fragment>
+      );
+    }
+
+    return (
+      <HashRouter>
+        <div>
+          <h1>Review Website</h1>
+          <ul className="header">{nav}</ul>
+          <div className="content">
+            <Route exact path="/" component={Home} />
+            <Route path="/stuff" render={(props) => <LogReg {...props} roleChange={this.handleChanged} />} />
+            <Route path="/userdash" component={Userdash} />
+            <Route path="/top" component={AllRestaurants} />
+            <Route path="/recent" component={RecentReviews} />
+            <Route path="/restaurantDash" component={RestaurantDash} />
+            <Route path="/logout" component={Logout} />
+          </div>
+        </div>
+      </HashRouter>
+    );
+  }
 }
 
 export default App;
