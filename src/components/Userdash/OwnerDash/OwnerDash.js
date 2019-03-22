@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Tabs from "../../Tabs/Tabs";
+import Update from "../Update";
 
 class OwnerDash extends Component{
 
@@ -10,7 +11,12 @@ class OwnerDash extends Component{
                 
                 <div label ='Create new restaurant' />
 
-                <div label ='Update user info' />
+                <div label ='Create new restaurant' />
+
+                <div label ='Update user info'>
+                    <Update />
+                </div>
+
             </Tabs>
         );
     }

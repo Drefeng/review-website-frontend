@@ -8,8 +8,6 @@ class ReviewDash extends Component{
                 <div label ='List your reviews' />
                 
                 <div label ='Create new review' />
-
-                <div label ='Update user info' />
             </Tabs>
         );
     }

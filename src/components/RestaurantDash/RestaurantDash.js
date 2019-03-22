@@ -1,10 +1,23 @@
 import React, { Component } from "react";
+import Update from "../Userdash/Update";
+import Tabs from "../Tabs/Tabs";
 
 class RestaurantDash extends Component{
     render(){
         return(
             <div>
-                <h1>HEEEELLLLOO</h1>
+                <Tabs>
+                <div label ='List your restaurants' />
+                
+                <div label ='Create new restaurant' />
+
+                <div label ='Recent reviews for your restaurants' />
+
+                <div label ='Update user info'>
+                    <Update />
+                </div>
+
+            </Tabs>
             </div>
         );
     }

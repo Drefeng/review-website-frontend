@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const role = localStorage.getItem('role');
+    const role = JSON.parse(localStorage.getItem('role'));
     const token = localStorage.getItem('token');
     console.log(role);
     this.setState(() => ({role, token}));
@@ -49,7 +49,7 @@ class App extends Component {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/resturantDash">Restaurant Dashboard</NavLink>
+            <NavLink to="/restaurantDash">Restaurant Dashboard</NavLink>
           </li>
           <li>
             <NavLink to="/top">Top Restaurants</NavLink>
